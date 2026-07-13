@@ -42,9 +42,14 @@ void setup() {
 }
 
 void loop() {
-  int vr_value = analogRead(VR1);
-  int speed = map(vr_value, 0, 1023, -255, 255);
-  
-  run_motor(speed);
-  delay(50);
+  for (int i = 0; i < 255; i++) {
+    run_motor(i);
+    delay(10);
+  }
+  delay(47000);
+  for (int i = 255; i > 0; i--) {
+    run_motor(i);
+    delay(10);
+  }
+  delay(3000);
 }
