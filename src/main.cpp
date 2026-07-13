@@ -15,12 +15,18 @@ void run_motor(int speed) {
   if (speed > 50) {
     analogWrite(MOTOR_DRIVER_IN1, speed);
     analogWrite(MOTOR_DRIVER_IN2, 0);
+    digitalWrite(LED1, HIGH);
+    digitalWrite(LED5, LOW);
   } else if (speed < -50) {
     analogWrite(MOTOR_DRIVER_IN1, 0);
     analogWrite(MOTOR_DRIVER_IN2, -speed);
+    digitalWrite(LED1, LOW);
+    digitalWrite(LED5, HIGH);
   } else {
     analogWrite(MOTOR_DRIVER_IN1, 0);
     analogWrite(MOTOR_DRIVER_IN2, 0);
+    digitalWrite(LED1, LOW);
+    digitalWrite(LED5, LOW);
   }
 }
 
@@ -38,6 +44,7 @@ void setup() {
 void loop() {
   int vr_value = analogRead(VR1);
   int speed = map(vr_value, 0, 1023, -255, 255);
+  
   run_motor(speed);
   delay(50);
 }
