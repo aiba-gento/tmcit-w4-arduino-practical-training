@@ -36,11 +36,8 @@ void setup() {
 }
 
 void loop() {
-  // 半固定抵抗の値の応じて２週する時間を変化し丁度いいタイムに変更する
-  int vr_value = analogRead(VR1);
-  int loop_time = map(vr_value, 0, 1023, 10000, 100000);
   run_motor(1);
-  delay(loop_time);
+  delay(50000);
   run_motor(0);
-  delay(1000);
+  delay(3000);
 }
